@@ -1,5 +1,5 @@
 from src.server.instance import server
 
-from src.controllers.books import *
+from src.controllers.anime import *
 
 server.run()

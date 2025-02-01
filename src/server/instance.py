@@ -6,8 +6,8 @@ class server():
         self.app = Flask(__name__)
         self.api = Api(self.app,
             version='1.0',
-            title='Sample Book API',
-            description='A simple book API',
+            title='AnimeList API',
+            description='A simple API',
             doc='/docs'
         )
 
