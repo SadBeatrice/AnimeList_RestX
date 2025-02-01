@@ -1,13 +1,15 @@
-from flask_restx import fields
+from src.server.instance import db
 
-from src.server.instance import server
+class Anime(db.Model):
 
+    # Tabela da Lista de animes.
+    __tablename__ = 'animes'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(200), nullable=False)
+    nota = db.Column(db.Float, nullable=True)
+    comentario = db.Column(db.Text, nullable=True)
+    status = db.Column(db.String(50), nullable=False)
 
-# Definindo o modelo "Anime" para a API
-anime_model = server.api.model('Anime', {
-    'id': fields.String(required=True, description='O ID do registro.'),
-    'title': fields.String(required=True, min_length=1, max_length=200, description='O título do anime.'),
-    'nota': fields.Float(description='A nota dada ao anime.'),
-    'comentario': fields.String(min_length=1, max_length=500, description='Um comentário sobre o anime (opcional).'),
-    'status': fields.String(required=True, description='O status do anime (ex: "Assistido", "Assistindo", "Não assistido").')
-})
+    # se chamar o anime retornará o título
+    def __repr__(self):
+        return f'<{self.title}>'
